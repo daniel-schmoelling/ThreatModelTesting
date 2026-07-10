@@ -1,0 +1,16 @@
+{
+  "version": "2.6.2",
+  "summary": {
+    "title": "New Threat Model",
+    "owner": "",
+    "description": "This system is an AWS-based content-research and AI document-processing platform called “CRP” [1]. It is designed to accept traffic through a public ingress layer, protected by a WAF and load balancer, and route requests into backend application services running on ECS Fargate [1].\n\nAt the application layer, the platform uses an ECS cluster named `crp-platform` with several containerized services [1]:\n- `backend-orchestrator` as the main coordination/API service [1]\n- `extraction-service` for document extraction tasks [1]\n- `research-agent` for research-related processing [1]\n- `ingestion-worker` for ingestion/background job handling [1]\n\nThe backend orchestrates work across the internal services, forming a pipeline where incoming requests trigger extraction, research, and worker processes [1].\n\nFor storage, the platform uses multiple AWS-managed data services:\n- PostgreSQL RDS (`crp-case-db`) for structured case data, with storage encryption enabled [1]\n- S3 bucket (`crp-ingested-documents`) for document storage, protected with KMS-backed server-side encryption [1]\n- AWS Secrets Manager (`crp/app-secrets`) for sensitive application secrets, also protected with KMS [1]\n\nThe architecture also integrates private AI capabilities through VPC endpoints, specifically for services like Textract and Bedrock, which suggests support for OCR and LLM-based document analysis without exposing those calls over the public internet [1].\n\nIn short, this is a cloud-native, microservice-style AWS platform for ingesting, processing, researching, and storing documents and case data, with encrypted storage, secret management, and private AI-service integration [1].",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [],
+    "diagramTop": 0,
+    "reviewer": "",
+    "threatTop": 0
+  }
+}
